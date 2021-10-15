@@ -1,6 +1,9 @@
+package com.shpp.p2p.cs.ppolyak.LuxCampus;
+
 import java.util.Date;
 
 public class Employee {
+
     private long id;
     private String name;
     private int age;
@@ -11,7 +14,7 @@ public class Employee {
     private static int count = 0;
 
     public Employee (String name, int age, String gender, double salary, int fixedBugs, double defaultBugRate, long id){
-    this.id = (new Date().getTime() / 1000L) % Integer.MAX_VALUE;
+    this.id = id;
     this.name = name;
     this.age = age;
     this.gender =gender;
@@ -38,7 +41,7 @@ public class Employee {
     }
 
     public double getSalary() {
-        return salary + fixedBugs * defaultBugRate/100;
+        return salary + fixedBugs * defaultBugRate;
     }
 
     public void setSalary(double salary) {
@@ -49,11 +52,15 @@ public class Employee {
         return gender;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getName() {
+    public String getName(String name) {
         return name;
     }
 
@@ -69,14 +76,14 @@ public class Employee {
         this.age = age;
     }
 
-    public String toSting() {
-        return "Employee ( " +
-                "Name: " + getName() +
+    public String toString() {
+        return "Employee = {"  +
+                " name: " + getName(name) +
                 ", age: " + getAge() +
                 ", gender: " + getGender() +
-                "\n Salary: " + getSalary() +
+                ", salary: " + getSalary() +
                 ", fixed bugs: " + getFixedBugs() +
-                ", default bug rate: " + getDefaultBugRate() + ")\n";
+                ", bug rate: " + getDefaultBugRate() +
+                ", ID: " + getId() + " }\n";
     }
-
 }
