@@ -1,4 +1,4 @@
-package com.shpp.p2p.cs.ppolyak.LuxCampus;
+package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
 
 import java.util.Date;
 
@@ -61,7 +61,7 @@ public class Employee {
     }
 
     public String getName(String name) {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -85,5 +85,9 @@ public class Employee {
                 ", fixed bugs: " + getFixedBugs() +
                 ", bug rate: " + getDefaultBugRate() +
                 ", ID: " + getId() + " }\n";
+    }
+
+    public String getNames() {
+        return this.name;
     }
 }
