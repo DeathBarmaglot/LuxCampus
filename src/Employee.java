@@ -1,5 +1,4 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
-
 import java.util.Date;
 
 public class Employee {
@@ -10,25 +9,24 @@ public class Employee {
     private String gender;
     private double salary;
     private int fixedBugs;
-    private double defaultBugRate = 100 ;
-    private static int count = 0;
+    private double defaultBugRate = 100;
 
-    public Employee (String name, int age, String gender, double salary, int fixedBugs, double defaultBugRate, long id){
-    this.id = id;
-    this.name = name;
-    this.age = age;
-    this.gender =gender;
-    this.salary = salary;
-    this.fixedBugs = fixedBugs;
-    this.defaultBugRate = defaultBugRate;
-    count++;
+    public Employee(String name, int age, String gender, double salary, int fixedBugs, double defaultBugRate, long id) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+        this.fixedBugs = fixedBugs;
+        this.defaultBugRate = defaultBugRate;
+
     }
 
     public double getDefaultBugRate() {
         return defaultBugRate;
     }
 
-    public void setDefaultBugRate(double defaultBugRate) {
+    private void setDefaultBugRate(double defaultBugRate) {
         this.defaultBugRate = defaultBugRate;
     }
 
@@ -36,7 +34,7 @@ public class Employee {
         return fixedBugs;
     }
 
-    public void setFixedBugs(int fixedBugs) {
+    private void setFixedBugs(int fixedBugs) {
         this.fixedBugs = fixedBugs;
     }
 
@@ -44,7 +42,7 @@ public class Employee {
         return salary + fixedBugs * defaultBugRate;
     }
 
-    public void setSalary(double salary) {
+    private void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -56,15 +54,15 @@ public class Employee {
         return id;
     }
 
-    public void setGender(String gender) {
+    private void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getName(String name) {
-        return this.name;
+    public String getName() {
+        return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
@@ -72,22 +70,18 @@ public class Employee {
         return age;
     }
 
-    public void setAge(int age) {
+    private void setAge(int age) {
         this.age = age;
     }
 
     public String toString() {
-        return "Employee = {"  +
-                " name: " + getName(name) +
-                ", age: " + getAge() +
-                ", gender: " + getGender() +
-                ", salary: " + getSalary() +
-                ", fixed bugs: " + getFixedBugs() +
-                ", bug rate: " + getDefaultBugRate() +
-                ", ID: " + getId() + " }\n";
-    }
-
-    public String getNames() {
-        return this.name;
+        return "{ \"name\": " + getName() +
+                ", \"age\": " + getAge() +
+                ", \"gender\": " + getGender() +
+                ", \"salary\": " + getSalary() +
+                ", \"fixedBugs\": " + getFixedBugs() +
+                ", \"bugsRate\": " + getDefaultBugRate() +
+                ", \"id\": " + getId() + " }\n";
     }
 }
+

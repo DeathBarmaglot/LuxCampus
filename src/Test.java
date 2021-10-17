@@ -1,7 +1,5 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
 
-import java.util.Arrays;
-
 public class Test {
 
     public static void main(String[] args) {
@@ -11,9 +9,13 @@ public class Test {
 
         double salaries = workers.calculateSalaryAndBonus();
         System.out.println(salaries);
-        Employee[] worker = workers.getByName("Jimmy");
-        System.out.println(Arrays.toString(worker));
-       workers.sortByName();
+
+        Employee[] worker = workers.getByName("John");
+//        System.out.println(Arrays.toString(worker));
+        Employee[] sortedName = workers.sortByName();
+//        System.out.println(Arrays.toString(sortedName));
+        Employee[] sortedSalary = workers.sortByNameAndSalary();
+//        System.out.println(Arrays.toString(sortedSalary));
 
 
     }

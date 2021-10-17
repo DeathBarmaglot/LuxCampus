@@ -1,8 +1,8 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+
 import java.util.Arrays;
-import java.util.stream.Stream;
+
+import static java.lang.Long.parseLong;
 
 public class EmployeeService {
 
@@ -21,7 +21,7 @@ public class EmployeeService {
         for (Employee employee : employees) {
             salaries += (employee.getSalary());
         }
-        return BigDecimal.valueOf(salaries).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        return salaries;
     }
 
     protected Employee getById(long id) {
@@ -38,36 +38,73 @@ public class EmployeeService {
 
         int c = 0;
         for (Employee employee : employees) {
-            if (employee.getName(name).equals(name)) {
+            if (employee.getName().equals(name)) {
                 c++;
             }
         }
         Employee[] array = new Employee[c];
         c = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getName(name).equals(name)) {
-                array[c] = employees[i];
+        for (Employee employee : employees) {
+            if (employee.getName().equals(name)) {
+                array[c] = employee;
                 c++;
             }
         }
         return array;
     }
 
-    protected void sortByName() {
+    protected Employee[] sortByName() {
         String[] names = new String[employees.length];
+        Employee[] result = new Employee[employees.length];
 
         for (int i = 0; i < employees.length; i++) {
-            names[i] = employees[i].getNames()+","+employees[i].getSalary()+","+employees[i].getId();
+            names[i] = employees[i].getName() + "," + employees[i].getId();
         }
         Arrays.sort(names);
         for (int i = 0; i < employees.length; i++) {
-            System.out.println(Arrays.toString(names[i].split(",")));
+            result[i] = (getById(parseLong(names[i].split(",")[1])));
         }
-//            Arrays.toString(names));
 
-//    return array;
+        return result;
 
     }
+
+    protected Employee[] sortByNameAndSalary() {
+        Employee[] names = sortByName();
+        String[] salaries = new String[names.length];
+        Employee[] result = new Employee[names.length];
+
+        for (int i = 0; i < names.length; i++) {
+            salaries[i] = names[i].getSalary() + "," + names[i].getId();
+        }
+        Arrays.sort(salaries);
+        for (int i = 0; i < names.length; i++) {
+            result[i] = (getById(parseLong(salaries[i].split(",")[1])));
+        }
+
+        return result;
+
+    }
+
+    protected Employee remove(long id) {
+
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getId() == id) {
+                Employee delete = employees[i];
+                employees[i] = null;
+                return delete;
+            }
+        }
+        return null;
+    }
+
+    protected Employee edit(Employee employee) {
+
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getId() == employee.getId()) {
+                employees[i] = employee;
+            }
+        }
+        return null;
+    }
 }
-//    Employee edit(Employee) -> находит сотрудника по id, и подменяет информацию о нем на новую. Старую версию сотрудника метод возвращает.
-//    Employee remove(long id) -> находит сотрудника по id, и удаляет его из массива. Возвращает ссылку на удаленного сотрудника.
