@@ -1,4 +1,5 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Employee {
@@ -9,9 +10,36 @@ public class Employee {
     private String gender;
     private double salary;
     private int fixedBugs;
-    private double defaultBugRate = 100;
+    private int days;
+    private double defaultBugRate;
 
-    public Employee(String name, int age, String gender, double salary, int fixedBugs, double defaultBugRate, long id) {
+    public Employee(long id, String name, int age, double salary, String gender) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+    }
+    public Employee(long id, String name, int age, double salary, String gender, double defaultBugRate) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+        this.defaultBugRate = defaultBugRate;
+
+    }
+
+    public Employee(long id, String name, int age, double salary, String gender, double defaultBugRate, int days) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+        this.defaultBugRate = defaultBugRate;
+        this.days = days;
+    }
+    public Employee(long id, String name, int age, double salary, String gender, int fixedBugs, double defaultBugRate, int days ) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -19,7 +47,7 @@ public class Employee {
         this.salary = salary;
         this.fixedBugs = fixedBugs;
         this.defaultBugRate = defaultBugRate;
-
+        this.days = days;
     }
 
     public double getDefaultBugRate() {
@@ -84,4 +112,3 @@ public class Employee {
                 ", \"id\": " + getId() + " }\n";
     }
 }
-
