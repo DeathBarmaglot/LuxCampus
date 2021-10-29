@@ -1,6 +1,6 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
-
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static java.lang.Long.parseLong;
 
@@ -35,7 +35,6 @@ public class EmployeeService {
     }
 
     protected Employee[] getByName(String name) {
-
         int c = 0;
         for (Employee employee : employees) {
             if (employee.getName().equals(name)) {
@@ -64,9 +63,7 @@ public class EmployeeService {
         for (int i = 0; i < employees.length; i++) {
             result[i] = (getById(parseLong(names[i].split(",")[1])));
         }
-
         return result;
-
     }
 
     protected Employee[] sortByNameAndSalary() {
@@ -81,13 +78,10 @@ public class EmployeeService {
         for (int i = 0; i < names.length; i++) {
             result[i] = (getById(parseLong(salaries[i].split(",")[1])));
         }
-
         return result;
-
     }
 
     protected Employee remove(long id) {
-
         for (int i = 0; i < employees.length; i++) {
             if (employees[i].getId() == id) {
                 Employee delete = employees[i];
@@ -99,12 +93,19 @@ public class EmployeeService {
     }
 
     protected Employee edit(Employee employee) {
-
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getId() == employee.getId()) {
+            if (employees[i].id == employee.id) {
+                Employee edit = employees[i];
                 employees[i] = employee;
+                return edit;
             }
         }
         return null;
+    }
+
+    protected void add(Employee employee){
+        Employee[] newArray = new Employee[employees.length + 1];
+        IntStream.range(0, employees.length).forEach(i -> newArray[i] = employees[i]);
+        newArray[employees.length] = employee;
     }
 }

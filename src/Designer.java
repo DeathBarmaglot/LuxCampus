@@ -1,27 +1,27 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
-import java.util.Random;
-
 
 public class Designer extends Employee{
 
     int workedDays;
-    int rate;
+    double rate;
 
     public Designer(int id, String name, int age, double salary, String gender, double rate, int workedDays) {
-        super(id, name, age, salary, gender, rate, workedDays);
+        super(id, name, age, salary, gender);
+        this.rate = rate;
+        this.workedDays = workedDays;
 
+}
 
-
-    }
-
-    double getDevSalary() {
-        return getSalary() + rate  * workedDays;
+    public double getSalary() {
+        double salary = this.salary + this.rate * this.workedDays;
+        setSalary(salary);
+        return salary;
     }
 
 
     @Override
     public String toString() {
-        return "Designer: "+ super.toString() ;
+        return "Designer: "+ super.toString()+"{ rate: " + this.rate + ", workedDays: "+ this.workedDays+" }\n";
     }
 
 }

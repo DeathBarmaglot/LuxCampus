@@ -1,16 +1,14 @@
 package com.shpp.p2p.cs.ppolyak.LuxCampus.src;
+
 import java.util.Arrays;
-import java.util.Date;
 
 public class Employee {
-
-    private long id;
+    protected long id;
     private String name;
     private int age;
     private String gender;
-    private double salary;
+    protected double salary;
     private int fixedBugs;
-    private int days;
     private double defaultBugRate;
 
     public Employee(long id, String name, int age, double salary, String gender) {
@@ -20,26 +18,8 @@ public class Employee {
         this.gender = gender;
         this.salary = salary;
     }
-    public Employee(long id, String name, int age, double salary, String gender, double defaultBugRate) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.salary = salary;
-        this.defaultBugRate = defaultBugRate;
 
-    }
-
-    public Employee(long id, String name, int age, double salary, String gender, double defaultBugRate, int days) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.salary = salary;
-        this.defaultBugRate = defaultBugRate;
-        this.days = days;
-    }
-    public Employee(long id, String name, int age, double salary, String gender, int fixedBugs, double defaultBugRate, int days ) {
+    public Employee(long id, String name, int age, double salary, String gender, double defaultBugRate,int fixedBugs ) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -47,7 +27,6 @@ public class Employee {
         this.salary = salary;
         this.fixedBugs = fixedBugs;
         this.defaultBugRate = defaultBugRate;
-        this.days = days;
     }
 
     public double getDefaultBugRate() {
@@ -70,7 +49,7 @@ public class Employee {
         return salary + fixedBugs * defaultBugRate;
     }
 
-    private void setSalary(double salary) {
+    protected void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -80,10 +59,6 @@ public class Employee {
 
     public long getId() {
         return id;
-    }
-
-    private void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getName() {
@@ -103,12 +78,19 @@ public class Employee {
     }
 
     public String toString() {
-        return "{ \"name\": " + getName() +
+        return "{ \"id\": " + getId() +
+                ", \"name\": " + getName() +
                 ", \"age\": " + getAge() +
                 ", \"gender\": " + getGender() +
                 ", \"salary\": " + getSalary() +
-                ", \"fixedBugs\": " + getFixedBugs() +
-                ", \"bugsRate\": " + getDefaultBugRate() +
-                ", \"id\": " + getId() + " }\n";
+//                ", \"fixedBugs\": " + getFixedBugs() +
+//                ", \"bugsRate\": " + getDefaultBugRate() +
+                " }\n";
+    }
+    public static void print(String string, Employee[] worker){
+        System.out.println(string + Arrays.toString(worker));
+    }
+    public static void print(String string, Employee employee){
+        System.out.println(string + employee);
     }
 }
